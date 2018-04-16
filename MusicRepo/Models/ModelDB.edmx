@@ -1,0 +1,369 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="visualStudioDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="idAlbum" />
+          </Key>
+          <Property Name="idAlbum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Artista" Type="int" />
+          <Property Name="Ano" Type="int" Nullable="false" />
+          <Property Name="Editora" Type="int" />
+        </EntityType>
+        <EntityType Name="Artista">
+          <Key>
+            <PropertyRef Name="idArtista" />
+          </Key>
+          <Property Name="idArtista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Naturalidade" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Editora">
+          <Key>
+            <PropertyRef Name="idEditora" />
+          </Key>
+          <Property Name="idEditora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Fundacao" Type="int" />
+          <Property Name="Localidade" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Festival">
+          <Key>
+            <PropertyRef Name="idFestival" />
+          </Key>
+          <Property Name="idFestival" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Artista" Type="int" />
+          <Property Name="Localidade" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Musica">
+          <Key>
+            <PropertyRef Name="idMusica" />
+          </Key>
+          <Property Name="idMusica" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Artista" Type="int" />
+          <Property Name="Album" Type="int" />
+          <Property Name="Duracao" Type="decimal" Precision="5" Scale="0" />
+        </EntityType>
+        <Association Name="FK__Album__Artista__22751F6C">
+          <End Role="Artista" Type="Self.Artista" Multiplicity="0..1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artista">
+              <PropertyRef Name="idArtista" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="Artista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Album__Editora__236943A5">
+          <End Role="Editora" Type="Self.Editora" Multiplicity="0..1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Editora">
+              <PropertyRef Name="idEditora" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="Editora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Festival__Artist__2A164134">
+          <End Role="Artista" Type="Self.Artista" Multiplicity="0..1" />
+          <End Role="Festival" Type="Self.Festival" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artista">
+              <PropertyRef Name="idArtista" />
+            </Principal>
+            <Dependent Role="Festival">
+              <PropertyRef Name="Artista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Musica__Album__2739D489">
+          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+          <End Role="Musica" Type="Self.Musica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="idAlbum" />
+            </Principal>
+            <Dependent Role="Musica">
+              <PropertyRef Name="Album" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Musica__Artista__2645B050">
+          <End Role="Artista" Type="Self.Artista" Multiplicity="0..1" />
+          <End Role="Musica" Type="Self.Musica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artista">
+              <PropertyRef Name="idArtista" />
+            </Principal>
+            <Dependent Role="Musica">
+              <PropertyRef Name="Artista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="visualStudioDBModelStoreContainer">
+          <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artista" EntityType="Self.Artista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Editora" EntityType="Self.Editora" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Festival" EntityType="Self.Festival" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Musica" EntityType="Self.Musica" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Album__Artista__22751F6C" Association="Self.FK__Album__Artista__22751F6C">
+            <End Role="Artista" EntitySet="Artista" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Album__Editora__236943A5" Association="Self.FK__Album__Editora__236943A5">
+            <End Role="Editora" EntitySet="Editora" />
+            <End Role="Album" EntitySet="Album" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Festival__Artist__2A164134" Association="Self.FK__Festival__Artist__2A164134">
+            <End Role="Artista" EntitySet="Artista" />
+            <End Role="Festival" EntitySet="Festival" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Musica__Album__2739D489" Association="Self.FK__Musica__Album__2739D489">
+            <End Role="Album" EntitySet="Album" />
+            <End Role="Musica" EntitySet="Musica" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Musica__Artista__2645B050" Association="Self.FK__Musica__Artista__2645B050">
+            <End Role="Artista" EntitySet="Artista" />
+            <End Role="Musica" EntitySet="Musica" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="visualStudioDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Album">
+          <Key>
+            <PropertyRef Name="idAlbum" />
+          </Key>
+          <Property Name="idAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Artista" Type="Int32" />
+          <Property Name="Ano" Type="Int32" Nullable="false" />
+          <Property Name="Editora" Type="Int32" />
+          <NavigationProperty Name="Artista1" Relationship="Self.FK__Album__Artista__22751F6C" FromRole="Album" ToRole="Artista" />
+          <NavigationProperty Name="Editora1" Relationship="Self.FK__Album__Editora__236943A5" FromRole="Album" ToRole="Editora" />
+          <NavigationProperty Name="Musicas" Relationship="Self.FK__Musica__Album__2739D489" FromRole="Album" ToRole="Musica" />
+        </EntityType>
+        <EntityType Name="Artista">
+          <Key>
+            <PropertyRef Name="idArtista" />
+          </Key>
+          <Property Name="idArtista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Naturalidade" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Albums" Relationship="Self.FK__Album__Artista__22751F6C" FromRole="Artista" ToRole="Album" />
+          <NavigationProperty Name="Festivals" Relationship="Self.FK__Festival__Artist__2A164134" FromRole="Artista" ToRole="Festival" />
+          <NavigationProperty Name="Musicas" Relationship="Self.FK__Musica__Artista__2645B050" FromRole="Artista" ToRole="Musica" />
+        </EntityType>
+        <EntityType Name="Editora">
+          <Key>
+            <PropertyRef Name="idEditora" />
+          </Key>
+          <Property Name="idEditora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fundacao" Type="Int32" />
+          <Property Name="Localidade" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Albums" Relationship="Self.FK__Album__Editora__236943A5" FromRole="Editora" ToRole="Album" />
+        </EntityType>
+        <EntityType Name="Festival">
+          <Key>
+            <PropertyRef Name="idFestival" />
+          </Key>
+          <Property Name="idFestival" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Artista" Type="Int32" />
+          <Property Name="Localidade" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Artista1" Relationship="Self.FK__Festival__Artist__2A164134" FromRole="Festival" ToRole="Artista" />
+        </EntityType>
+        <EntityType Name="Musica">
+          <Key>
+            <PropertyRef Name="idMusica" />
+          </Key>
+          <Property Name="idMusica" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Artista" Type="Int32" />
+          <Property Name="Album" Type="Int32" />
+          <Property Name="Duracao" Type="Decimal" Precision="5" Scale="0" />
+          <NavigationProperty Name="Album1" Relationship="Self.FK__Musica__Album__2739D489" FromRole="Musica" ToRole="Album" />
+          <NavigationProperty Name="Artista1" Relationship="Self.FK__Musica__Artista__2645B050" FromRole="Musica" ToRole="Artista" />
+        </EntityType>
+        <Association Name="FK__Album__Artista__22751F6C">
+          <End Role="Artista" Type="Self.Artista" Multiplicity="0..1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artista">
+              <PropertyRef Name="idArtista" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="Artista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Album__Editora__236943A5">
+          <End Role="Editora" Type="Self.Editora" Multiplicity="0..1" />
+          <End Role="Album" Type="Self.Album" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Editora">
+              <PropertyRef Name="idEditora" />
+            </Principal>
+            <Dependent Role="Album">
+              <PropertyRef Name="Editora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Musica__Album__2739D489">
+          <End Role="Album" Type="Self.Album" Multiplicity="0..1" />
+          <End Role="Musica" Type="Self.Musica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Album">
+              <PropertyRef Name="idAlbum" />
+            </Principal>
+            <Dependent Role="Musica">
+              <PropertyRef Name="Album" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Festival__Artist__2A164134">
+          <End Role="Artista" Type="Self.Artista" Multiplicity="0..1" />
+          <End Role="Festival" Type="Self.Festival" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artista">
+              <PropertyRef Name="idArtista" />
+            </Principal>
+            <Dependent Role="Festival">
+              <PropertyRef Name="Artista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Musica__Artista__2645B050">
+          <End Role="Artista" Type="Self.Artista" Multiplicity="0..1" />
+          <End Role="Musica" Type="Self.Musica" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artista">
+              <PropertyRef Name="idArtista" />
+            </Principal>
+            <Dependent Role="Musica">
+              <PropertyRef Name="Artista" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="visualStudioDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Albums" EntityType="Self.Album" />
+          <EntitySet Name="Artistas" EntityType="Self.Artista" />
+          <EntitySet Name="Editoras" EntityType="Self.Editora" />
+          <EntitySet Name="Festivals" EntityType="Self.Festival" />
+          <EntitySet Name="Musicas" EntityType="Self.Musica" />
+          <AssociationSet Name="FK__Album__Artista__22751F6C" Association="Self.FK__Album__Artista__22751F6C">
+            <End Role="Artista" EntitySet="Artistas" />
+            <End Role="Album" EntitySet="Albums" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Album__Editora__236943A5" Association="Self.FK__Album__Editora__236943A5">
+            <End Role="Editora" EntitySet="Editoras" />
+            <End Role="Album" EntitySet="Albums" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Musica__Album__2739D489" Association="Self.FK__Musica__Album__2739D489">
+            <End Role="Album" EntitySet="Albums" />
+            <End Role="Musica" EntitySet="Musicas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Festival__Artist__2A164134" Association="Self.FK__Festival__Artist__2A164134">
+            <End Role="Artista" EntitySet="Artistas" />
+            <End Role="Festival" EntitySet="Festivals" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Musica__Artista__2645B050" Association="Self.FK__Musica__Artista__2645B050">
+            <End Role="Artista" EntitySet="Artistas" />
+            <End Role="Musica" EntitySet="Musicas" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="visualStudioDBModelStoreContainer" CdmEntityContainer="visualStudioDBEntities">
+          <EntitySetMapping Name="Albums">
+            <EntityTypeMapping TypeName="visualStudioDBModel.Album">
+              <MappingFragment StoreEntitySet="Album">
+                <ScalarProperty Name="idAlbum" ColumnName="idAlbum" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Artista" ColumnName="Artista" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Editora" ColumnName="Editora" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Artistas">
+            <EntityTypeMapping TypeName="visualStudioDBModel.Artista">
+              <MappingFragment StoreEntitySet="Artista">
+                <ScalarProperty Name="idArtista" ColumnName="idArtista" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Naturalidade" ColumnName="Naturalidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Editoras">
+            <EntityTypeMapping TypeName="visualStudioDBModel.Editora">
+              <MappingFragment StoreEntitySet="Editora">
+                <ScalarProperty Name="idEditora" ColumnName="idEditora" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Fundacao" ColumnName="Fundacao" />
+                <ScalarProperty Name="Localidade" ColumnName="Localidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Festivals">
+            <EntityTypeMapping TypeName="visualStudioDBModel.Festival">
+              <MappingFragment StoreEntitySet="Festival">
+                <ScalarProperty Name="idFestival" ColumnName="idFestival" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Artista" ColumnName="Artista" />
+                <ScalarProperty Name="Localidade" ColumnName="Localidade" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Musicas">
+            <EntityTypeMapping TypeName="visualStudioDBModel.Musica">
+              <MappingFragment StoreEntitySet="Musica">
+                <ScalarProperty Name="idMusica" ColumnName="idMusica" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Artista" ColumnName="Artista" />
+                <ScalarProperty Name="Album" ColumnName="Album" />
+                <ScalarProperty Name="Duracao" ColumnName="Duracao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

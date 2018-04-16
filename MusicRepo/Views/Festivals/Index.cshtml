@@ -1,0 +1,45 @@
+﻿@model IEnumerable<MusicRepo.Models.Festival>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Localidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Artista1.Nome)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Localidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Artista1.Nome)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idFestival }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idFestival }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idFestival })
+        </td>
+    </tr>
+}
+
+</table>

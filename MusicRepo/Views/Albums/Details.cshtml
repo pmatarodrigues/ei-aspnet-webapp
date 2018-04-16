@@ -1,0 +1,50 @@
+﻿@model MusicRepo.Models.Album
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Album</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ano)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ano)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Artista1.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Artista1.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Editora1.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Editora1.Nome)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idAlbum }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
