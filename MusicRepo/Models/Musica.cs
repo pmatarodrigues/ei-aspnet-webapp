@@ -14,6 +14,13 @@ namespace MusicRepo.Models
     
     public partial class Musica
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Musica()
+        {
+            this.MusicasAlbums = new HashSet<MusicasAlbum>();
+            this.MusicasArtistas = new HashSet<MusicasArtista>();
+        }
+    
         public int idMusica { get; set; }
         public string Nome { get; set; }
         public Nullable<int> Artista { get; set; }
@@ -22,5 +29,9 @@ namespace MusicRepo.Models
     
         public virtual Album Album1 { get; set; }
         public virtual Artista Artista1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MusicasAlbum> MusicasAlbums { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MusicasArtista> MusicasArtistas { get; set; }
     }
 }

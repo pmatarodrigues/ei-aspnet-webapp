@@ -18,8 +18,11 @@ namespace MusicRepo.Models
         public Artista()
         {
             this.Albums = new HashSet<Album>();
+            this.AlbumsArtistas = new HashSet<AlbumsArtista>();
             this.Festivals = new HashSet<Festival>();
             this.Musicas = new HashSet<Musica>();
+            this.ArtistasFestivals = new HashSet<ArtistasFestival>();
+            this.MusicasArtistas = new HashSet<MusicasArtista>();
         }
     
         public int idArtista { get; set; }
@@ -29,8 +32,14 @@ namespace MusicRepo.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Album> Albums { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AlbumsArtista> AlbumsArtistas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Festival> Festivals { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Musica> Musicas { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ArtistasFestival> ArtistasFestivals { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MusicasArtista> MusicasArtistas { get; set; }
     }
 }

@@ -27,6 +27,37 @@
         </dd>
 
     </dl>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                Album
+            </th>
+            <th>
+                Ano
+            </th>
+            <th>
+                Editora
+            </th>
+        </tr>
+
+        @foreach (var item in Model.AlbumsArtistas)
+        { 
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Album.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Album.Ano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Album.Editora1)
+                </td>
+            </tr>
+        }
+    </table>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.idArtista }) |

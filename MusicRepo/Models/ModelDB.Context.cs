@@ -26,9 +26,14 @@ namespace MusicRepo.Models
         }
     
         public virtual DbSet<Album> Albums { get; set; }
+        public virtual DbSet<AlbumsArtista> AlbumsArtistas { get; set; }
+        public virtual DbSet<AlbumsEditora> AlbumsEditoras { get; set; }
         public virtual DbSet<Artista> Artistas { get; set; }
+        public virtual DbSet<ArtistasFestival> ArtistasFestivals { get; set; }
         public virtual DbSet<Editora> Editoras { get; set; }
         public virtual DbSet<Festival> Festivals { get; set; }
         public virtual DbSet<Musica> Musicas { get; set; }
+        public virtual DbSet<MusicasAlbum> MusicasAlbums { get; set; }
+        public virtual DbSet<MusicasArtista> MusicasArtistas { get; set; }
     }
 }
