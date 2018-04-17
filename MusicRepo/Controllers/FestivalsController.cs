@@ -65,6 +65,7 @@ namespace MusicRepo.Views
         }
 
         // GET: Festivals/Create
+        [Authorize(Roles = "Empresario")]
         public ActionResult Create()
         {
             ViewBag.Artista = new SelectList(db.Artistas, "idArtista", "Nome");
@@ -90,6 +91,7 @@ namespace MusicRepo.Views
         }
 
         // GET: Festivals/Edit/5
+        [Authorize(Roles = "Empresario")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -123,6 +125,7 @@ namespace MusicRepo.Views
         }
 
         // GET: Festivals/Delete/5
+        [Authorize(Roles = "Empresario")]
         public ActionResult Delete(int? id)
         {
             if (id == null)

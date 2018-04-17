@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (ViewBag.displayMenu == "Yes")
+{
+    <h1>Bem-vindo Admin!</h1>
+    <li>@Html.ActionLink("Manage Role", "Index", "Role")</li>
+
+}
+else
+{
+    <h2>  Bem-Vindo <strong>@ViewBag.Name</strong> </h2>
+}  

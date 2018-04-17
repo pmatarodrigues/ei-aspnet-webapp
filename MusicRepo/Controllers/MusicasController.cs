@@ -80,6 +80,7 @@ namespace MusicRepo.Views
         }
 
         // GET: Musicas/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.Album = new SelectList(db.Albums, "idAlbum", "Nome");
@@ -107,6 +108,7 @@ namespace MusicRepo.Views
         }
 
         // GET: Musicas/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -142,6 +144,7 @@ namespace MusicRepo.Views
         }
 
         // GET: Musicas/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
