@@ -6,16 +6,16 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
-using (Html.BeginForm())
+<p><a class="btn btn-primary btn-lg" href="/Artistas/Create">Criar</a></p>
+
+
+@using (Html.BeginForm())
 {
-<p>
-    Nome de Musica: @Html.TextBox("SearchString")
-    <input type="submit" value="Pesquisar" />
-</p>
+    <p>
+        Nome de Musica: @Html.TextBox("SearchString")
+        <input type="submit" value="Pesquisar" />
+    </p>
 }
 
 <table class="table">

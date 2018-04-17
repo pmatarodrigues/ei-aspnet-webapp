@@ -6,16 +6,15 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<p><a class="btn btn-primary btn-lg" href="/Editoras/Create">Criar</a></p>
+
 
 @using (Html.BeginForm())
 {
-<p>
-    Nome de Editora: @Html.TextBox("SearchString")
-    <input type="submit" value="Pesquisar" />
-</p>
+    <p>
+        Nome de Editora: @Html.TextBox("SearchString")
+        <input type="submit" value="Pesquisar" />
+    </p>
 }
 
 <table class="table">

@@ -7,8 +7,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<p><a class="btn btn-primary btn-lg" href="/Albums/Create">Criar</a></p>
+
 
 @using (Html.BeginForm())
 {
@@ -33,6 +33,8 @@
             @Html.ActionLink("Editora", "Index", new { sortOrder = ViewBag.EditoraSortParm })
         </th>
     </tr>
+
+
 
     <!--
     <tr>

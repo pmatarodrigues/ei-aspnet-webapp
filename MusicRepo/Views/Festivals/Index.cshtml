@@ -6,9 +6,9 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<p><a class="btn btn-primary btn-lg" href="/Festivals/Create">Criar</a></p>
+
+
 <table class="table">
     <tr>
         <th>
@@ -20,20 +20,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Localidade)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idFestival }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idFestival }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idFestival })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidade)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idFestival }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idFestival }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idFestival })
+            </td>
+        </tr>
+    }
 
 </table>
