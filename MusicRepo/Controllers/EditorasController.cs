@@ -15,9 +15,44 @@ namespace MusicRepo.Views
         private visualStudioDBEntities db = new visualStudioDBEntities();
 
         // GET: Editoras
-        public ActionResult Index()
+        public ActionResult Index(String sortOrder, String searchString)
         {
-            return View(db.Editoras.ToList());
+            ViewBag.NomeSortParm = sortOrder == "Nome" ? "nome_desc" : "Nome";
+            ViewBag.FundacaoSortParm = sortOrder == "Fundacao" ? "fundacao_desc" : "Fundacao";
+            ViewBag.LocalidadeSortParm = sortOrder == "Localidade" ? "localidade_desc" : "Localidade";
+            var editoras = from s in db.Editoras
+                         select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                editoras = editoras.Where(s => s.Nome.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "Nome":
+                    editoras = editoras.OrderBy(s => s.Nome);
+                    break;
+                case "nome_desc":
+                    editoras = editoras.OrderByDescending(s => s.Nome);
+                    break;
+                case "Fundacao":
+                    editoras = editoras.OrderBy(s => s.Fundacao);
+                    break;
+                case "fundacao_desc":
+                    editoras = editoras.OrderByDescending(s => s.Fundacao);
+                    break;
+                case "Localidade":
+                    editoras = editoras.OrderBy(s => s.Localidade);
+                    break;
+                case "localidade_desc":
+                    editoras = editoras.OrderByDescending(s => s.Localidade);
+                    break;
+                default:
+                    editoras = editoras.OrderBy(s => s.Nome);
+                    break;
+            }
+            return View(editoras.ToList());
         }
 
         // GET: Editoras/Details/5

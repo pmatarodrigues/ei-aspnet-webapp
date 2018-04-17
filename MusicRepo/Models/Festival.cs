@@ -11,12 +11,15 @@ namespace MusicRepo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Festival
     {
         public int idFestival { get; set; }
+        [StringLength(50)]
         public string Nome { get; set; }
         public Nullable<int> Artista { get; set; }
+        [StringLength(50)]
         public string Localidade { get; set; }
     
         public virtual Artista Artista1 { get; set; }

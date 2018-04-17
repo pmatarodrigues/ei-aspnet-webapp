@@ -11,7 +11,8 @@ namespace MusicRepo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Artista
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,7 +24,9 @@ namespace MusicRepo.Models
         }
     
         public int idArtista { get; set; }
+        [StringLength(50)]
         public string Nome { get; set; }
+        [StringLength(50)]
         public string Naturalidade { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

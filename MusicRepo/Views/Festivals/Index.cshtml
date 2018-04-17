@@ -12,16 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.ActionLink("Nome", "Index", new { sortOrder = ViewBag.NomeSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Localidade)
-        </th>
-        <th>
-            @Html.Label("Artista")
-            <!--
-            @Html.DisplayNameFor(model => model.Artista1.Nome)
-                -->
+            @Html.ActionLink("Localidade", "Index", new { sortOrder = ViewBag.LocalidadeSortParm })
         </th>
         <th></th>
     </tr>
@@ -33,9 +27,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Localidade)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Artista1.Nome)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.idFestival }) |

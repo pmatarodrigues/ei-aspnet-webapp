@@ -49,6 +49,25 @@
         </dd>
 
     </dl>
+
+    <table class="table">
+        <tr>
+            <th>Musica</th>
+            <th>Duracao</th>
+        </tr>
+        @foreach (var item in Model.Musicas)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duracao)
+                </td>
+            </tr>
+        }
+    </table>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.idAlbum }) |

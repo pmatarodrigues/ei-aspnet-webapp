@@ -11,7 +11,8 @@ namespace MusicRepo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Editora
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,8 +22,10 @@ namespace MusicRepo.Models
         }
     
         public int idEditora { get; set; }
+        [StringLength(50)]
         public string Nome { get; set; }
         public Nullable<int> Fundacao { get; set; }
+        [StringLength(50)]
         public string Localidade { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

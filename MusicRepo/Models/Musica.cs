@@ -11,13 +11,16 @@ namespace MusicRepo.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Musica
     {
         public int idMusica { get; set; }
+        [StringLength(50)]
         public string Nome { get; set; }
         public Nullable<int> Artista { get; set; }
         public Nullable<int> Album { get; set; }
+        [Range(0, 60)]
         public Nullable<decimal> Duracao { get; set; }
     
         public virtual Album Album1 { get; set; }

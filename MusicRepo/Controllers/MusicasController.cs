@@ -15,11 +15,54 @@ namespace MusicRepo.Views
         private visualStudioDBEntities db = new visualStudioDBEntities();
 
         // GET: Musicas
-        public ActionResult Index()
+        public ActionResult Index(String sortOrder, String searchString)
         {
-            var musicas = db.Musicas.Include(m => m.Album1).Include(m => m.Artista1);
+            ViewBag.NomeSortParm = sortOrder == "Nome" ? "nome_desc" : "Nome";
+            ViewBag.DuracaoSortParm = sortOrder == "Duracao" ? "duracao_desc" : "Duracao";
+            ViewBag.ArtistaSortParm = sortOrder == "Artista" ? "artista_desc" : "Artista";
+            ViewBag.AlbumSortParm = sortOrder == "Album" ? "album_desc" : "Album";
+
+            var musicas = from s in db.Musicas
+                            select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                musicas = musicas.Where(s => s.Nome.Contains(searchString));
+            }
+
+            switch (sortOrder)
+            {
+                case "Nome":
+                    musicas = musicas.OrderBy(s => s.Nome);
+                    break;
+                case "nome_desc":
+                    musicas = musicas.OrderByDescending(s => s.Nome);
+                    break;
+                case "Duracao":
+                    musicas = musicas.OrderBy(s => s.Duracao);
+                    break;
+                case "duracao_desc":
+                    musicas = musicas.OrderByDescending(s => s.Duracao);
+                    break;
+                case "Artista":
+                    musicas = musicas.OrderBy(s => s.Artista);
+                    break;
+                case "artista_desc":
+                    musicas = musicas.OrderByDescending(s => s.Artista);
+                    break;
+                case "Album":
+                    musicas = musicas.OrderBy(s => s.Album);
+                    break;
+                case "album_desc":
+                    musicas = musicas.OrderByDescending(s => s.Album);
+                    break;
+                default:
+                    musicas = musicas.OrderBy(s => s.Nome);
+                    break;
+            }
             return View(musicas.ToList());
-        }
+
+    }
 
         // GET: Musicas/Details/5
         public ActionResult Details(int? id)

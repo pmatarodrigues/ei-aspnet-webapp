@@ -78,6 +78,7 @@ namespace MusicRepo.Models
         }
 
         // GET: Albums/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.Artista = new SelectList(db.Artistas, "idArtista", "Nome");
@@ -105,6 +106,7 @@ namespace MusicRepo.Models
         }
 
         // GET: Albums/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -140,6 +142,7 @@ namespace MusicRepo.Models
         }
 
         // GET: Albums/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -9,37 +9,47 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+@using (Html.BeginForm())
+{
+<p>
+    Nome de Editora: @Html.TextBox("SearchString")
+    <input type="submit" value="Pesquisar" />
+</p>
+}
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Nome)
+            @Html.ActionLink("Nome", "Index", new { sortOrder = ViewBag.NomeSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fundacao)
+            @Html.ActionLink("Fundacao", "Index", new { sortOrder = ViewBag.FundacaoSortParm })
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Localidade)
+            @Html.ActionLink("Localidade", "Index", new { sortOrder = ViewBag.LocalidadeSortParm })
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fundacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Localidade)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idEditora }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idEditora }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idEditora })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fundacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Localidade)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idEditora }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idEditora }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idEditora })
+            </td>
+        </tr>
+    }
 
 </table>

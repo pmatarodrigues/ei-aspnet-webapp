@@ -9,6 +9,15 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+
+using (Html.BeginForm())
+{
+<p>
+    Nome de Musica: @Html.TextBox("SearchString")
+    <input type="submit" value="Pesquisar" />
+</p>
+}
+
 <table class="table">
     <tr>
         <th>
@@ -19,20 +28,21 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Naturalidade)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idArtista }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idArtista }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idArtista })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naturalidade)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idArtista }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idArtista }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idArtista })
+            </td>
+        </tr>
+    }
 
 </table>

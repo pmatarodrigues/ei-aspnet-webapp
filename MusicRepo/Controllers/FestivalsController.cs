@@ -15,9 +15,37 @@ namespace MusicRepo.Views
         private visualStudioDBEntities db = new visualStudioDBEntities();
 
         // GET: Festivals
-        public ActionResult Index()
+        public ActionResult Index(String sortOrder, String searchString)
         {
-            var festivals = db.Festivals.Include(f => f.Artista1);
+            ViewBag.NomeSortParm = sortOrder == "Nome" ? "nome_desc" : "Nome";
+            ViewBag.LocalidadeSortParm = sortOrder == "Localidade" ? "localidade_desc" : "Localidade";
+            var festivals = from s in db.Festivals
+                         select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                festivals = festivals.Where(s => s.Nome.Contains(searchString));
+            }
+
+
+            switch (sortOrder)
+            {
+                case "Nome":
+                    festivals = festivals.OrderBy(s => s.Nome);
+                    break;
+                case "nome_desc":
+                    festivals = festivals.OrderByDescending(s => s.Nome);
+                    break;
+                case "Localidade":
+                    festivals = festivals.OrderBy(s => s.Localidade);
+                    break;
+                case "localidade_desc":
+                    festivals = festivals.OrderByDescending(s => s.Localidade);
+                    break;               
+                default:
+                    festivals = festivals.OrderBy(s => s.Nome);
+                    break;
+            }
             return View(festivals.ToList());
         }
 
