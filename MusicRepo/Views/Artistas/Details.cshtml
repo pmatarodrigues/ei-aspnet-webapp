@@ -25,34 +25,20 @@
         <dd>
             @Html.DisplayFor(model => model.Naturalidade)
         </dd>
-
     </dl>
-
-
     <table class="table">
         <tr>
-            <th>
-                Album
-            </th>
-            <th>
-                Ano
-            </th>
-            <th>
-                Editora
-            </th>
+            <th>Album</th>
+            <th>Ano</th>
         </tr>
-
-        @foreach (var item in Model.AlbumsArtistas)
-        { 
+        @foreach (var item in Model.Albums)
+        {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Album.Nome)
+                    @Html.DisplayFor(modelItem => item.Nome)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Album.Ano)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Album.Editora1)
+                    @Html.DisplayFor(modelItem => item.Ano)
                 </td>
             </tr>
         }

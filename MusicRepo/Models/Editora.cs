@@ -18,7 +18,6 @@ namespace MusicRepo.Models
         public Editora()
         {
             this.Albums = new HashSet<Album>();
-            this.AlbumsEditoras = new HashSet<AlbumsEditora>();
         }
     
         public int idEditora { get; set; }
@@ -28,7 +27,5 @@ namespace MusicRepo.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Album> Albums { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AlbumsEditora> AlbumsEditoras { get; set; }
     }
 }

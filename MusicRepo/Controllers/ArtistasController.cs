@@ -15,9 +15,38 @@ namespace MusicRepo.Views
         private visualStudioDBEntities db = new visualStudioDBEntities();
 
         // GET: Artistas
-        public ActionResult Index()
+        public ActionResult Index(String sortOrder, String searchString)
         {
-            return View(db.Artistas.ToList());
+            ViewBag.NomeSortParm = sortOrder == "Nome" ? "nome_desc" : "Nome";
+            ViewBag.NaturalidadeSortParm = sortOrder == "Naturalidade" ? "naturalidade_desc" : "Naturalidade";
+            var artistas = from s in db.Artistas
+                         select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                artistas = artistas.Where(s => s.Nome.Contains(searchString));
+            }
+
+
+            switch (sortOrder)
+            {
+                case "Nome":
+                    artistas = artistas.OrderBy(s => s.Nome);
+                    break;
+                case "nome_desc":
+                    artistas = artistas.OrderByDescending(s => s.Nome);
+                    break;
+                case "Naturalidade":
+                    artistas = artistas.OrderBy(s => s.Naturalidade);
+                    break;
+                case "naturalidade_desc":
+                    artistas = artistas.OrderByDescending(s => s.Naturalidade);
+                    break;
+                default:
+                    artistas = artistas.OrderBy(s => s.Nome);
+                    break;
+            }
+            return View(artistas.ToList());
         }
 
         // GET: Artistas/Details/5

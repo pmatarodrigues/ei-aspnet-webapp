@@ -14,9 +14,51 @@ namespace MusicRepo.Models
         private visualStudioDBEntities db = new visualStudioDBEntities();
 
         // GET: Albums
-        public ActionResult Index()
+        public ActionResult Index(String sortOrder, String searchString)
         {
-            var albums = db.Albums.Include(a => a.Artista1).Include(a => a.Editora1);
+            ViewBag.NomeSortParm = sortOrder == "Nome" ? "nome_desc" : "Nome";
+            ViewBag.AnoSortParm = sortOrder == "Ano" ? "ano_desc" : "Ano";
+            ViewBag.ArtistaSortParm = sortOrder == "Artista" ? "artista_desc" : "Artista";
+            ViewBag.EditoraSortParm = sortOrder == "Editora" ? "editora_desc" : "Editora";
+            var albums = from s in db.Albums
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                albums = albums.Where(s => s.Nome.Contains(searchString));
+            }
+
+
+            switch (sortOrder)
+            {
+                case "Nome":
+                    albums = albums.OrderBy(s => s.Nome);
+                    break;
+                case "nome_desc":
+                    albums = albums.OrderByDescending(s => s.Nome);
+                    break;
+                case "Ano":
+                    albums = albums.OrderBy(s => s.Ano);
+                    break;
+                case "ano_desc":
+                    albums = albums.OrderByDescending(s => s.Ano);
+                    break;
+                case "Artista":
+                    albums = albums.OrderBy(s => s.Artista);
+                    break;
+                case "artista_desc":
+                    albums = albums.OrderByDescending(s => s.Artista);
+                    break;
+                case "Editora":
+                    albums = albums.OrderBy(s => s.Editora);
+                    break;
+                case "editora_desc":
+                    albums = albums.OrderByDescending(s => s.Editora);
+                    break;
+                default:
+                    albums = albums.OrderBy(s => s.Ano);
+                    break;
+            }
             return View(albums.ToList());
         }
 

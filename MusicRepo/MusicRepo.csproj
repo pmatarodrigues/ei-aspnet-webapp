@@ -198,20 +198,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Models\Album.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\AlbumsArtista.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\AlbumsController.cs" />
-    <Compile Include="Models\AlbumsEditora.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Artista.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ArtistasFestival.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Editora.cs">
@@ -240,22 +231,11 @@
     <Compile Include="Models\Musica.cs">
       <DependentUpon>ModelDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\MusicasAlbum.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MusicasArtista.cs">
-      <DependentUpon>ModelDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="Controllers\AlbumsArtistasController.cs" />
-    <Compile Include="Controllers\AlbumsEditorasController.cs" />
     <Compile Include="Controllers\ArtistasController.cs" />
-    <Compile Include="Controllers\ArtistasFestivalsController.cs" />
     <Compile Include="Controllers\EditorasController.cs" />
     <Compile Include="Controllers\FestivalsController.cs" />
-    <Compile Include="Controllers\MusicasAlbumsController.cs" />
-    <Compile Include="Controllers\MusicasArtistasController.cs" />
     <Compile Include="Controllers\MusicasController.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -339,26 +319,11 @@
     <Content Include="Views\Albums\Details.cshtml" />
     <Content Include="Views\Albums\Edit.cshtml" />
     <Content Include="Views\Albums\Index.cshtml" />
-    <Content Include="Views\AlbumsArtistas\Create.cshtml" />
-    <Content Include="Views\AlbumsArtistas\Delete.cshtml" />
-    <Content Include="Views\AlbumsArtistas\Details.cshtml" />
-    <Content Include="Views\AlbumsArtistas\Edit.cshtml" />
-    <Content Include="Views\AlbumsArtistas\Index.cshtml" />
-    <Content Include="Views\AlbumsEditoras\Create.cshtml" />
-    <Content Include="Views\AlbumsEditoras\Delete.cshtml" />
-    <Content Include="Views\AlbumsEditoras\Details.cshtml" />
-    <Content Include="Views\AlbumsEditoras\Edit.cshtml" />
-    <Content Include="Views\AlbumsEditoras\Index.cshtml" />
     <Content Include="Views\Artistas\Create.cshtml" />
     <Content Include="Views\Artistas\Delete.cshtml" />
     <Content Include="Views\Artistas\Details.cshtml" />
     <Content Include="Views\Artistas\Edit.cshtml" />
     <Content Include="Views\Artistas\Index.cshtml" />
-    <Content Include="Views\ArtistasFestivals\Create.cshtml" />
-    <Content Include="Views\ArtistasFestivals\Delete.cshtml" />
-    <Content Include="Views\ArtistasFestivals\Details.cshtml" />
-    <Content Include="Views\ArtistasFestivals\Edit.cshtml" />
-    <Content Include="Views\ArtistasFestivals\Index.cshtml" />
     <Content Include="Views\Editoras\Create.cshtml" />
     <Content Include="Views\Editoras\Delete.cshtml" />
     <Content Include="Views\Editoras\Details.cshtml" />
@@ -374,16 +339,6 @@
     <Content Include="Views\Musicas\Details.cshtml" />
     <Content Include="Views\Musicas\Edit.cshtml" />
     <Content Include="Views\Musicas\Index.cshtml" />
-    <Content Include="Views\MusicasAlbums\Create.cshtml" />
-    <Content Include="Views\MusicasAlbums\Delete.cshtml" />
-    <Content Include="Views\MusicasAlbums\Details.cshtml" />
-    <Content Include="Views\MusicasAlbums\Edit.cshtml" />
-    <Content Include="Views\MusicasAlbums\Index.cshtml" />
-    <Content Include="Views\MusicasArtistas\Create.cshtml" />
-    <Content Include="Views\MusicasArtistas\Delete.cshtml" />
-    <Content Include="Views\MusicasArtistas\Details.cshtml" />
-    <Content Include="Views\MusicasArtistas\Edit.cshtml" />
-    <Content Include="Views\MusicasArtistas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

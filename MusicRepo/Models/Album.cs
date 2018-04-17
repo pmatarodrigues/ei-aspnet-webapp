@@ -18,9 +18,6 @@ namespace MusicRepo.Models
         public Album()
         {
             this.Musicas = new HashSet<Musica>();
-            this.AlbumsArtistas = new HashSet<AlbumsArtista>();
-            this.AlbumsEditoras = new HashSet<AlbumsEditora>();
-            this.MusicasAlbums = new HashSet<MusicasAlbum>();
         }
     
         public int idAlbum { get; set; }
@@ -33,11 +30,5 @@ namespace MusicRepo.Models
         public virtual Editora Editora1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Musica> Musicas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AlbumsArtista> AlbumsArtistas { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AlbumsEditora> AlbumsEditoras { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MusicasAlbum> MusicasAlbums { get; set; }
     }
 }

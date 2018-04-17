@@ -15,24 +15,6 @@
           <Property Name="Ano" Type="int" Nullable="false" />
           <Property Name="Editora" Type="int" />
         </EntityType>
-        <EntityType Name="AlbumsArtista">
-          <Key>
-            <PropertyRef Name="idAlbumsArtista" />
-          </Key>
-          <Property Name="idAlbumsArtista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ano" Type="int" />
-          <Property Name="idAlbum" Type="int" Nullable="false" />
-          <Property Name="idArtista" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AlbumsEditora">
-          <Key>
-            <PropertyRef Name="idAlbumsEditora" />
-          </Key>
-          <Property Name="idAlbumsEditora" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ano" Type="int" />
-          <Property Name="idAlbum" Type="int" Nullable="false" />
-          <Property Name="idEditora" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Artista">
           <Key>
             <PropertyRef Name="idArtista" />
@@ -40,14 +22,6 @@
           <Property Name="idArtista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nome" Type="nvarchar" MaxLength="40" Nullable="false" />
           <Property Name="Naturalidade" Type="nvarchar" MaxLength="30" />
-        </EntityType>
-        <EntityType Name="ArtistasFestival">
-          <Key>
-            <PropertyRef Name="idArtistasFestival" />
-          </Key>
-          <Property Name="idArtistasFestival" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idArtista" Type="int" Nullable="false" />
-          <Property Name="idFestival" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Editora">
           <Key>
@@ -77,22 +51,6 @@
           <Property Name="Album" Type="int" />
           <Property Name="Duracao" Type="decimal" Precision="5" Scale="0" />
         </EntityType>
-        <EntityType Name="MusicasAlbum">
-          <Key>
-            <PropertyRef Name="idMusicasAlbum" />
-          </Key>
-          <Property Name="idMusicasAlbum" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idMusica" Type="int" Nullable="false" />
-          <Property Name="idAlbum" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MusicasArtista">
-          <Key>
-            <PropertyRef Name="idMusicasArtista" />
-          </Key>
-          <Property Name="idMusicasArtista" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="idMusica" Type="int" Nullable="false" />
-          <Property Name="idArtista" Type="int" Nullable="false" />
-        </EntityType>
         <Association Name="FK__Album__Artista__22751F6C">
           <End Role="Artista" Type="Self.Artista" Multiplicity="0..1" />
           <End Role="Album" Type="Self.Album" Multiplicity="*" />
@@ -153,157 +111,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_AlbumsArtista_dbo_Album_idAlbum">
-          <End Role="Album" Type="Self.Album" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AlbumsArtista" Type="Self.AlbumsArtista" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Album">
-              <PropertyRef Name="idAlbum" />
-            </Principal>
-            <Dependent Role="AlbumsArtista">
-              <PropertyRef Name="idAlbum" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AlbumsArtista_dbo_Artista_idArtista">
-          <End Role="Artista" Type="Self.Artista" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AlbumsArtista" Type="Self.AlbumsArtista" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Artista">
-              <PropertyRef Name="idArtista" />
-            </Principal>
-            <Dependent Role="AlbumsArtista">
-              <PropertyRef Name="idArtista" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AlbumsArtista_dbo_Editora_idEditora">
-          <End Role="Editora" Type="Self.Editora" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AlbumsEditora" Type="Self.AlbumsEditora" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Editora">
-              <PropertyRef Name="idEditora" />
-            </Principal>
-            <Dependent Role="AlbumsEditora">
-              <PropertyRef Name="idEditora" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AlbumsEditora_dbo_Album_idAlbum">
-          <End Role="Album" Type="Self.Album" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AlbumsEditora" Type="Self.AlbumsEditora" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Album">
-              <PropertyRef Name="idAlbum" />
-            </Principal>
-            <Dependent Role="AlbumsEditora">
-              <PropertyRef Name="idAlbum" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_ArtistasFestival_dbo_Artista_idArtista">
-          <End Role="Artista" Type="Self.Artista" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ArtistasFestival" Type="Self.ArtistasFestival" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Artista">
-              <PropertyRef Name="idArtista" />
-            </Principal>
-            <Dependent Role="ArtistasFestival">
-              <PropertyRef Name="idArtista" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_ArtistasFestival_dbo_Festival_idFestival">
-          <End Role="Festival" Type="Self.Festival" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ArtistasFestival" Type="Self.ArtistasFestival" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Festival">
-              <PropertyRef Name="idFestival" />
-            </Principal>
-            <Dependent Role="ArtistasFestival">
-              <PropertyRef Name="idFestival" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_MusicasAlbum_dbo_Album_idAlbum">
-          <End Role="Album" Type="Self.Album" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MusicasAlbum" Type="Self.MusicasAlbum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Album">
-              <PropertyRef Name="idAlbum" />
-            </Principal>
-            <Dependent Role="MusicasAlbum">
-              <PropertyRef Name="idAlbum" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_MusicasAlbum_dbo_Musica_idMusica">
-          <End Role="Musica" Type="Self.Musica" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MusicasAlbum" Type="Self.MusicasAlbum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Musica">
-              <PropertyRef Name="idMusica" />
-            </Principal>
-            <Dependent Role="MusicasAlbum">
-              <PropertyRef Name="idMusica" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_MusicasArtista_dbo_Artista_idArtista">
-          <End Role="Artista" Type="Self.Artista" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MusicasArtista" Type="Self.MusicasArtista" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Artista">
-              <PropertyRef Name="idArtista" />
-            </Principal>
-            <Dependent Role="MusicasArtista">
-              <PropertyRef Name="idArtista" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_MusicasArtista_dbo_Musica_idMusica">
-          <End Role="Musica" Type="Self.Musica" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MusicasArtista" Type="Self.MusicasArtista" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Musica">
-              <PropertyRef Name="idMusica" />
-            </Principal>
-            <Dependent Role="MusicasArtista">
-              <PropertyRef Name="idMusica" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="visualStudioDBModelStoreContainer">
           <EntitySet Name="Album" EntityType="Self.Album" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AlbumsArtista" EntityType="Self.AlbumsArtista" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AlbumsEditora" EntityType="Self.AlbumsEditora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Artista" EntityType="Self.Artista" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ArtistasFestival" EntityType="Self.ArtistasFestival" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Editora" EntityType="Self.Editora" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Festival" EntityType="Self.Festival" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Musica" EntityType="Self.Musica" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MusicasAlbum" EntityType="Self.MusicasAlbum" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MusicasArtista" EntityType="Self.MusicasArtista" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Album__Artista__22751F6C" Association="Self.FK__Album__Artista__22751F6C">
             <End Role="Artista" EntitySet="Artista" />
             <End Role="Album" EntitySet="Album" />
@@ -323,46 +136,6 @@
           <AssociationSet Name="FK__Musica__Artista__2645B050" Association="Self.FK__Musica__Artista__2645B050">
             <End Role="Artista" EntitySet="Artista" />
             <End Role="Musica" EntitySet="Musica" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AlbumsArtista_dbo_Album_idAlbum" Association="Self.FK_dbo_AlbumsArtista_dbo_Album_idAlbum">
-            <End Role="Album" EntitySet="Album" />
-            <End Role="AlbumsArtista" EntitySet="AlbumsArtista" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AlbumsArtista_dbo_Artista_idArtista" Association="Self.FK_dbo_AlbumsArtista_dbo_Artista_idArtista">
-            <End Role="Artista" EntitySet="Artista" />
-            <End Role="AlbumsArtista" EntitySet="AlbumsArtista" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AlbumsArtista_dbo_Editora_idEditora" Association="Self.FK_dbo_AlbumsArtista_dbo_Editora_idEditora">
-            <End Role="Editora" EntitySet="Editora" />
-            <End Role="AlbumsEditora" EntitySet="AlbumsEditora" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AlbumsEditora_dbo_Album_idAlbum" Association="Self.FK_dbo_AlbumsEditora_dbo_Album_idAlbum">
-            <End Role="Album" EntitySet="Album" />
-            <End Role="AlbumsEditora" EntitySet="AlbumsEditora" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_ArtistasFestival_dbo_Artista_idArtista" Association="Self.FK_dbo_ArtistasFestival_dbo_Artista_idArtista">
-            <End Role="Artista" EntitySet="Artista" />
-            <End Role="ArtistasFestival" EntitySet="ArtistasFestival" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_ArtistasFestival_dbo_Festival_idFestival" Association="Self.FK_dbo_ArtistasFestival_dbo_Festival_idFestival">
-            <End Role="Festival" EntitySet="Festival" />
-            <End Role="ArtistasFestival" EntitySet="ArtistasFestival" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_MusicasAlbum_dbo_Album_idAlbum" Association="Self.FK_dbo_MusicasAlbum_dbo_Album_idAlbum">
-            <End Role="Album" EntitySet="Album" />
-            <End Role="MusicasAlbum" EntitySet="MusicasAlbum" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_MusicasAlbum_dbo_Musica_idMusica" Association="Self.FK_dbo_MusicasAlbum_dbo_Musica_idMusica">
-            <End Role="Musica" EntitySet="Musica" />
-            <End Role="MusicasAlbum" EntitySet="MusicasAlbum" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_MusicasArtista_dbo_Artista_idArtista" Association="Self.FK_dbo_MusicasArtista_dbo_Artista_idArtista">
-            <End Role="Artista" EntitySet="Artista" />
-            <End Role="MusicasArtista" EntitySet="MusicasArtista" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_MusicasArtista_dbo_Musica_idMusica" Association="Self.FK_dbo_MusicasArtista_dbo_Musica_idMusica">
-            <End Role="Musica" EntitySet="Musica" />
-            <End Role="MusicasArtista" EntitySet="MusicasArtista" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -382,31 +155,6 @@
           <NavigationProperty Name="Artista1" Relationship="Self.FK__Album__Artista__22751F6C" FromRole="Album" ToRole="Artista" />
           <NavigationProperty Name="Editora1" Relationship="Self.FK__Album__Editora__236943A5" FromRole="Album" ToRole="Editora" />
           <NavigationProperty Name="Musicas" Relationship="Self.FK__Musica__Album__2739D489" FromRole="Album" ToRole="Musica" />
-          <NavigationProperty Name="AlbumsArtistas" Relationship="Self.FK_dbo_AlbumsArtista_dbo_Album_idAlbum" FromRole="Album" ToRole="AlbumsArtista" />
-          <NavigationProperty Name="AlbumsEditoras" Relationship="Self.FK_dbo_AlbumsEditora_dbo_Album_idAlbum" FromRole="Album" ToRole="AlbumsEditora" />
-          <NavigationProperty Name="MusicasAlbums" Relationship="Self.FK_dbo_MusicasAlbum_dbo_Album_idAlbum" FromRole="Album" ToRole="MusicasAlbum" />
-        </EntityType>
-        <EntityType Name="AlbumsArtista">
-          <Key>
-            <PropertyRef Name="idAlbumsArtista" />
-          </Key>
-          <Property Name="idAlbumsArtista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ano" Type="Int32" />
-          <Property Name="idAlbum" Type="Int32" Nullable="false" />
-          <Property Name="idArtista" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Album" Relationship="Self.FK_dbo_AlbumsArtista_dbo_Album_idAlbum" FromRole="AlbumsArtista" ToRole="Album" />
-          <NavigationProperty Name="Artista" Relationship="Self.FK_dbo_AlbumsArtista_dbo_Artista_idArtista" FromRole="AlbumsArtista" ToRole="Artista" />
-        </EntityType>
-        <EntityType Name="AlbumsEditora">
-          <Key>
-            <PropertyRef Name="idAlbumsEditora" />
-          </Key>
-          <Property Name="idAlbumsEditora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ano" Type="Int32" />
-          <Property Name="idAlbum" Type="Int32" Nullable="false" />
-          <Property Name="idEditora" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Album" Relationship="Self.FK_dbo_AlbumsEditora_dbo_Album_idAlbum" FromRole="AlbumsEditora" ToRole="Album" />
-          <NavigationProperty Name="Editora" Relationship="Self.FK_dbo_AlbumsArtista_dbo_Editora_idEditora" FromRole="AlbumsEditora" ToRole="Editora" />
         </EntityType>
         <EntityType Name="Artista">
           <Key>
@@ -416,21 +164,8 @@
           <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Naturalidade" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Albums" Relationship="Self.FK__Album__Artista__22751F6C" FromRole="Artista" ToRole="Album" />
-          <NavigationProperty Name="AlbumsArtistas" Relationship="Self.FK_dbo_AlbumsArtista_dbo_Artista_idArtista" FromRole="Artista" ToRole="AlbumsArtista" />
           <NavigationProperty Name="Festivals" Relationship="Self.FK__Festival__Artist__2A164134" FromRole="Artista" ToRole="Festival" />
           <NavigationProperty Name="Musicas" Relationship="Self.FK__Musica__Artista__2645B050" FromRole="Artista" ToRole="Musica" />
-          <NavigationProperty Name="ArtistasFestivals" Relationship="Self.FK_dbo_ArtistasFestival_dbo_Artista_idArtista" FromRole="Artista" ToRole="ArtistasFestival" />
-          <NavigationProperty Name="MusicasArtistas" Relationship="Self.FK_dbo_MusicasArtista_dbo_Artista_idArtista" FromRole="Artista" ToRole="MusicasArtista" />
-        </EntityType>
-        <EntityType Name="ArtistasFestival">
-          <Key>
-            <PropertyRef Name="idArtistasFestival" />
-          </Key>
-          <Property Name="idArtistasFestival" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idArtista" Type="Int32" Nullable="false" />
-          <Property Name="idFestival" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Artista" Relationship="Self.FK_dbo_ArtistasFestival_dbo_Artista_idArtista" FromRole="ArtistasFestival" ToRole="Artista" />
-          <NavigationProperty Name="Festival" Relationship="Self.FK_dbo_ArtistasFestival_dbo_Festival_idFestival" FromRole="ArtistasFestival" ToRole="Festival" />
         </EntityType>
         <EntityType Name="Editora">
           <Key>
@@ -441,7 +176,6 @@
           <Property Name="Fundacao" Type="Int32" />
           <Property Name="Localidade" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Albums" Relationship="Self.FK__Album__Editora__236943A5" FromRole="Editora" ToRole="Album" />
-          <NavigationProperty Name="AlbumsEditoras" Relationship="Self.FK_dbo_AlbumsArtista_dbo_Editora_idEditora" FromRole="Editora" ToRole="AlbumsEditora" />
         </EntityType>
         <EntityType Name="Festival">
           <Key>
@@ -452,7 +186,6 @@
           <Property Name="Artista" Type="Int32" />
           <Property Name="Localidade" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Artista1" Relationship="Self.FK__Festival__Artist__2A164134" FromRole="Festival" ToRole="Artista" />
-          <NavigationProperty Name="ArtistasFestivals" Relationship="Self.FK_dbo_ArtistasFestival_dbo_Festival_idFestival" FromRole="Festival" ToRole="ArtistasFestival" />
         </EntityType>
         <EntityType Name="Musica">
           <Key>
@@ -465,28 +198,6 @@
           <Property Name="Duracao" Type="Decimal" Precision="5" Scale="0" />
           <NavigationProperty Name="Album1" Relationship="Self.FK__Musica__Album__2739D489" FromRole="Musica" ToRole="Album" />
           <NavigationProperty Name="Artista1" Relationship="Self.FK__Musica__Artista__2645B050" FromRole="Musica" ToRole="Artista" />
-          <NavigationProperty Name="MusicasAlbums" Relationship="Self.FK_dbo_MusicasAlbum_dbo_Musica_idMusica" FromRole="Musica" ToRole="MusicasAlbum" />
-          <NavigationProperty Name="MusicasArtistas" Relationship="Self.FK_dbo_MusicasArtista_dbo_Musica_idMusica" FromRole="Musica" ToRole="MusicasArtista" />
-        </EntityType>
-        <EntityType Name="MusicasAlbum">
-          <Key>
-            <PropertyRef Name="idMusicasAlbum" />
-          </Key>
-          <Property Name="idMusicasAlbum" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idMusica" Type="Int32" Nullable="false" />
-          <Property Name="idAlbum" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Album" Relationship="Self.FK_dbo_MusicasAlbum_dbo_Album_idAlbum" FromRole="MusicasAlbum" ToRole="Album" />
-          <NavigationProperty Name="Musica" Relationship="Self.FK_dbo_MusicasAlbum_dbo_Musica_idMusica" FromRole="MusicasAlbum" ToRole="Musica" />
-        </EntityType>
-        <EntityType Name="MusicasArtista">
-          <Key>
-            <PropertyRef Name="idMusicasArtista" />
-          </Key>
-          <Property Name="idMusicasArtista" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="idMusica" Type="Int32" Nullable="false" />
-          <Property Name="idArtista" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Artista" Relationship="Self.FK_dbo_MusicasArtista_dbo_Artista_idArtista" FromRole="MusicasArtista" ToRole="Artista" />
-          <NavigationProperty Name="Musica" Relationship="Self.FK_dbo_MusicasArtista_dbo_Musica_idMusica" FromRole="MusicasArtista" ToRole="Musica" />
         </EntityType>
         <Association Name="FK__Album__Artista__22751F6C">
           <End Role="Artista" Type="Self.Artista" Multiplicity="0..1" />
@@ -524,76 +235,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_AlbumsArtista_dbo_Album_idAlbum">
-          <End Role="Album" Type="Self.Album" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AlbumsArtista" Type="Self.AlbumsArtista" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Album">
-              <PropertyRef Name="idAlbum" />
-            </Principal>
-            <Dependent Role="AlbumsArtista">
-              <PropertyRef Name="idAlbum" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AlbumsEditora_dbo_Album_idAlbum">
-          <End Role="Album" Type="Self.Album" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AlbumsEditora" Type="Self.AlbumsEditora" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Album">
-              <PropertyRef Name="idAlbum" />
-            </Principal>
-            <Dependent Role="AlbumsEditora">
-              <PropertyRef Name="idAlbum" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_MusicasAlbum_dbo_Album_idAlbum">
-          <End Role="Album" Type="Self.Album" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MusicasAlbum" Type="Self.MusicasAlbum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Album">
-              <PropertyRef Name="idAlbum" />
-            </Principal>
-            <Dependent Role="MusicasAlbum">
-              <PropertyRef Name="idAlbum" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AlbumsArtista_dbo_Artista_idArtista">
-          <End Role="Artista" Type="Self.Artista" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AlbumsArtista" Type="Self.AlbumsArtista" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Artista">
-              <PropertyRef Name="idArtista" />
-            </Principal>
-            <Dependent Role="AlbumsArtista">
-              <PropertyRef Name="idArtista" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_AlbumsArtista_dbo_Editora_idEditora">
-          <End Role="Editora" Type="Self.Editora" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="AlbumsEditora" Type="Self.AlbumsEditora" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Editora">
-              <PropertyRef Name="idEditora" />
-            </Principal>
-            <Dependent Role="AlbumsEditora">
-              <PropertyRef Name="idEditora" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Festival__Artist__2A164134">
           <End Role="Artista" Type="Self.Artista" Multiplicity="0..1" />
           <End Role="Festival" Type="Self.Festival" Multiplicity="*" />
@@ -618,87 +259,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_ArtistasFestival_dbo_Artista_idArtista">
-          <End Role="Artista" Type="Self.Artista" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ArtistasFestival" Type="Self.ArtistasFestival" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Artista">
-              <PropertyRef Name="idArtista" />
-            </Principal>
-            <Dependent Role="ArtistasFestival">
-              <PropertyRef Name="idArtista" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_MusicasArtista_dbo_Artista_idArtista">
-          <End Role="Artista" Type="Self.Artista" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MusicasArtista" Type="Self.MusicasArtista" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Artista">
-              <PropertyRef Name="idArtista" />
-            </Principal>
-            <Dependent Role="MusicasArtista">
-              <PropertyRef Name="idArtista" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_ArtistasFestival_dbo_Festival_idFestival">
-          <End Role="Festival" Type="Self.Festival" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="ArtistasFestival" Type="Self.ArtistasFestival" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Festival">
-              <PropertyRef Name="idFestival" />
-            </Principal>
-            <Dependent Role="ArtistasFestival">
-              <PropertyRef Name="idFestival" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_MusicasAlbum_dbo_Musica_idMusica">
-          <End Role="Musica" Type="Self.Musica" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MusicasAlbum" Type="Self.MusicasAlbum" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Musica">
-              <PropertyRef Name="idMusica" />
-            </Principal>
-            <Dependent Role="MusicasAlbum">
-              <PropertyRef Name="idMusica" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_MusicasArtista_dbo_Musica_idMusica">
-          <End Role="Musica" Type="Self.Musica" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="MusicasArtista" Type="Self.MusicasArtista" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Musica">
-              <PropertyRef Name="idMusica" />
-            </Principal>
-            <Dependent Role="MusicasArtista">
-              <PropertyRef Name="idMusica" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="visualStudioDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Albums" EntityType="Self.Album" />
-          <EntitySet Name="AlbumsArtistas" EntityType="Self.AlbumsArtista" />
-          <EntitySet Name="AlbumsEditoras" EntityType="Self.AlbumsEditora" />
           <EntitySet Name="Artistas" EntityType="Self.Artista" />
-          <EntitySet Name="ArtistasFestivals" EntityType="Self.ArtistasFestival" />
           <EntitySet Name="Editoras" EntityType="Self.Editora" />
           <EntitySet Name="Festivals" EntityType="Self.Festival" />
           <EntitySet Name="Musicas" EntityType="Self.Musica" />
-          <EntitySet Name="MusicasAlbums" EntityType="Self.MusicasAlbum" />
-          <EntitySet Name="MusicasArtistas" EntityType="Self.MusicasArtista" />
           <AssociationSet Name="FK__Album__Artista__22751F6C" Association="Self.FK__Album__Artista__22751F6C">
             <End Role="Artista" EntitySet="Artistas" />
             <End Role="Album" EntitySet="Albums" />
@@ -711,26 +277,6 @@
             <End Role="Album" EntitySet="Albums" />
             <End Role="Musica" EntitySet="Musicas" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_AlbumsArtista_dbo_Album_idAlbum" Association="Self.FK_dbo_AlbumsArtista_dbo_Album_idAlbum">
-            <End Role="Album" EntitySet="Albums" />
-            <End Role="AlbumsArtista" EntitySet="AlbumsArtistas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AlbumsEditora_dbo_Album_idAlbum" Association="Self.FK_dbo_AlbumsEditora_dbo_Album_idAlbum">
-            <End Role="Album" EntitySet="Albums" />
-            <End Role="AlbumsEditora" EntitySet="AlbumsEditoras" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_MusicasAlbum_dbo_Album_idAlbum" Association="Self.FK_dbo_MusicasAlbum_dbo_Album_idAlbum">
-            <End Role="Album" EntitySet="Albums" />
-            <End Role="MusicasAlbum" EntitySet="MusicasAlbums" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AlbumsArtista_dbo_Artista_idArtista" Association="Self.FK_dbo_AlbumsArtista_dbo_Artista_idArtista">
-            <End Role="Artista" EntitySet="Artistas" />
-            <End Role="AlbumsArtista" EntitySet="AlbumsArtistas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_AlbumsArtista_dbo_Editora_idEditora" Association="Self.FK_dbo_AlbumsArtista_dbo_Editora_idEditora">
-            <End Role="Editora" EntitySet="Editoras" />
-            <End Role="AlbumsEditora" EntitySet="AlbumsEditoras" />
-          </AssociationSet>
           <AssociationSet Name="FK__Festival__Artist__2A164134" Association="Self.FK__Festival__Artist__2A164134">
             <End Role="Artista" EntitySet="Artistas" />
             <End Role="Festival" EntitySet="Festivals" />
@@ -738,26 +284,6 @@
           <AssociationSet Name="FK__Musica__Artista__2645B050" Association="Self.FK__Musica__Artista__2645B050">
             <End Role="Artista" EntitySet="Artistas" />
             <End Role="Musica" EntitySet="Musicas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_ArtistasFestival_dbo_Artista_idArtista" Association="Self.FK_dbo_ArtistasFestival_dbo_Artista_idArtista">
-            <End Role="Artista" EntitySet="Artistas" />
-            <End Role="ArtistasFestival" EntitySet="ArtistasFestivals" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_MusicasArtista_dbo_Artista_idArtista" Association="Self.FK_dbo_MusicasArtista_dbo_Artista_idArtista">
-            <End Role="Artista" EntitySet="Artistas" />
-            <End Role="MusicasArtista" EntitySet="MusicasArtistas" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_ArtistasFestival_dbo_Festival_idFestival" Association="Self.FK_dbo_ArtistasFestival_dbo_Festival_idFestival">
-            <End Role="Festival" EntitySet="Festivals" />
-            <End Role="ArtistasFestival" EntitySet="ArtistasFestivals" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_MusicasAlbum_dbo_Musica_idMusica" Association="Self.FK_dbo_MusicasAlbum_dbo_Musica_idMusica">
-            <End Role="Musica" EntitySet="Musicas" />
-            <End Role="MusicasAlbum" EntitySet="MusicasAlbums" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_MusicasArtista_dbo_Musica_idMusica" Association="Self.FK_dbo_MusicasArtista_dbo_Musica_idMusica">
-            <End Role="Musica" EntitySet="Musicas" />
-            <End Role="MusicasArtista" EntitySet="MusicasArtistas" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -777,41 +303,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AlbumsArtistas">
-            <EntityTypeMapping TypeName="visualStudioDBModel.AlbumsArtista">
-              <MappingFragment StoreEntitySet="AlbumsArtista">
-                <ScalarProperty Name="idAlbumsArtista" ColumnName="idAlbumsArtista" />
-                <ScalarProperty Name="Ano" ColumnName="Ano" />
-                <ScalarProperty Name="idAlbum" ColumnName="idAlbum" />
-                <ScalarProperty Name="idArtista" ColumnName="idArtista" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AlbumsEditoras">
-            <EntityTypeMapping TypeName="visualStudioDBModel.AlbumsEditora">
-              <MappingFragment StoreEntitySet="AlbumsEditora">
-                <ScalarProperty Name="idAlbumsEditora" ColumnName="idAlbumsEditora" />
-                <ScalarProperty Name="Ano" ColumnName="Ano" />
-                <ScalarProperty Name="idAlbum" ColumnName="idAlbum" />
-                <ScalarProperty Name="idEditora" ColumnName="idEditora" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Artistas">
             <EntityTypeMapping TypeName="visualStudioDBModel.Artista">
               <MappingFragment StoreEntitySet="Artista">
                 <ScalarProperty Name="idArtista" ColumnName="idArtista" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="Naturalidade" ColumnName="Naturalidade" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ArtistasFestivals">
-            <EntityTypeMapping TypeName="visualStudioDBModel.ArtistasFestival">
-              <MappingFragment StoreEntitySet="ArtistasFestival">
-                <ScalarProperty Name="idArtistasFestival" ColumnName="idArtistasFestival" />
-                <ScalarProperty Name="idArtista" ColumnName="idArtista" />
-                <ScalarProperty Name="idFestival" ColumnName="idFestival" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -843,24 +340,6 @@
                 <ScalarProperty Name="Artista" ColumnName="Artista" />
                 <ScalarProperty Name="Album" ColumnName="Album" />
                 <ScalarProperty Name="Duracao" ColumnName="Duracao" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MusicasAlbums">
-            <EntityTypeMapping TypeName="visualStudioDBModel.MusicasAlbum">
-              <MappingFragment StoreEntitySet="MusicasAlbum">
-                <ScalarProperty Name="idMusicasAlbum" ColumnName="idMusicasAlbum" />
-                <ScalarProperty Name="idMusica" ColumnName="idMusica" />
-                <ScalarProperty Name="idAlbum" ColumnName="idAlbum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MusicasArtistas">
-            <EntityTypeMapping TypeName="visualStudioDBModel.MusicasArtista">
-              <MappingFragment StoreEntitySet="MusicasArtista">
-                <ScalarProperty Name="idMusicasArtista" ColumnName="idMusicasArtista" />
-                <ScalarProperty Name="idMusica" ColumnName="idMusica" />
-                <ScalarProperty Name="idArtista" ColumnName="idArtista" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

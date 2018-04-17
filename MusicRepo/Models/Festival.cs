@@ -14,19 +14,11 @@ namespace MusicRepo.Models
     
     public partial class Festival
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Festival()
-        {
-            this.ArtistasFestivals = new HashSet<ArtistasFestival>();
-        }
-    
         public int idFestival { get; set; }
         public string Nome { get; set; }
         public Nullable<int> Artista { get; set; }
         public string Localidade { get; set; }
     
         public virtual Artista Artista1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ArtistasFestival> ArtistasFestivals { get; set; }
     }
 }
