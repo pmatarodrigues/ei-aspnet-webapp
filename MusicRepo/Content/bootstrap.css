@@ -68,14 +68,14 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
 }
 
 body {
-  margin: 0;
-  font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-  font-size: 0.9375rem;
-  font-weight: 400;
-  line-height: 1.5;
-  color: #212529;
-  text-align: left;
-  background-color: #fff;
+    margin: 0;
+    font-family: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #EEEEEE;
 }
 
 [tabindex="-1"]:focus {
@@ -129,12 +129,14 @@ ul ol {
 }
 
 dt {
-  font-weight: 700;
+  font-weight: 300;
 }
 
 dd {
   margin-bottom: .5rem;
   margin-left: 0;
+  font-weight:700;
+  font-size: 25pt;
 }
 
 blockquote {
@@ -5145,10 +5147,10 @@ input[type="button"].btn-block {
 }
 
 .jumbotron {
-  padding: 2rem 1rem;
-  margin-bottom: 2rem;
-  background-color: #ecf0f1;
-  border-radius: 0.3rem;
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #CFD8DC;
+    border-radius: 0.3rem;
 }
 
 @media (min-width: 576px) {

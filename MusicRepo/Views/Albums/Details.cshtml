@@ -9,70 +9,72 @@
 <div>
     <h4>Album</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ano)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ano)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Ano)
+            </dt>
 
-        <dt>
-            @Html.Label("Artista")
-            <!--
-            @Html.DisplayNameFor(model => model.Artista1.Nome)
-                -->
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Ano)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Artista1.Nome)
-        </dd>
+            <dt>
+                @Html.Label("Artista")
+                <!--
+                @Html.DisplayNameFor(model => model.Artista1.Nome)
+                    -->
+            </dt>
 
-        <dt>
-            @Html.Label("Editora")
-            <!--
-            @Html.DisplayNameFor(model => model.Editora1.Nome)
-                -->
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Artista1.Nome)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Editora1.Nome)
-        </dd>
+            <dt>
+                @Html.Label("Editora")
+                <!--
+                @Html.DisplayNameFor(model => model.Editora1.Nome)
+                    -->
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Editora1.Nome)
+            </dd>
 
-    <table class="table">
-        <tr>
-            <th>Musica</th>
-            <th>Duracao</th>
-        </tr>
-        @foreach (var item in Model.Musicas)
-        {
+        </dl>
+
+        <table class="table">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nome)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Duracao)
-                </td>
+                <th>Musica</th>
+                <th>Duracao</th>
             </tr>
-        }
-    </table>
+            @foreach (var item in Model.Musicas)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Duracao)
+                    </td>
+                </tr>
+            }
+        </table>
 
-</div>
-<p>
-<a class="btn btn-primary btn-sm" href="/Albums/Index">
-    <img src="https://i.imgur.com/nXrUxGd.png" alt="voltarIcon" align="middle" />
-    Voltar</a>
-@Html.ActionLink("Editar", "Edit", new { id = Model.idAlbum })
+    </div>
+    <p>
+        <a class="btn btn-primary btn-sm" href="/Albums/Index">
+            <img src="~/Imagens/setaEsq.png" alt="voltarIcon" align="middle" />
+            Voltar
+        </a>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.idAlbum })
 
-</p>
+    </p>

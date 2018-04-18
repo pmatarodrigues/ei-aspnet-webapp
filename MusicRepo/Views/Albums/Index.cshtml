@@ -6,88 +6,92 @@
 
 <h2>Albums</h2>
 
-<p>
-<p><a class="btn btn-primary" href="/Albums/Create">
-    <img src="https://imgur.com/XQugWNG.png" alt="addIcon" align="middle" />
-    Adicionar
-</a></p>
 
-
-
-@using (Html.BeginForm())
-{
     <p>
-        Nome de Album: @Html.TextBox("SearchString")
-        <input type="submit" value="Pesquisar" />
+    <p>
+        <a class="btn btn-primary" href="/Albums/Create">
+            <img src="~/Imagens/mais.png" alt="addIcon" align="middle" />
+            Adicionar
+        </a>
     </p>
-}
-
-<table class="table">
-    <tr>
-        <th>
-            @Html.ActionLink("Nome", "Index", new { sortOrder = ViewBag.NomeSortParm })
-        </th>
-        <th>
-            @Html.ActionLink("Ano", "Index", new { sortOrder = ViewBag.AnoSortParm })
-        </th>
-        <th>
-            @Html.ActionLink("Artista", "Index", new { sortOrder = ViewBag.ArtistaSortParm })
-        </th>
-        <th>
-            @Html.ActionLink("Editora", "Index", new { sortOrder = ViewBag.EditoraSortParm })
-        </th>
-    </tr>
 
 
 
-    <!--
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ano)
-        </th>
-        <th>
-            @Html.Label("Artista")
-            <!--
-            @Html.DisplayNameFor(model => model.Artista1.Nome)
-                -->
-    <!--
-        </th>
-        <th>
-            @Html.Label("Editora")
-            -->
-    <!--
-    @Html.DisplayNameFor(model => model.Editora1.Nome)
-        -->
-    <!--
-        </th>
-        <th></th>
-    </tr>
-    -->
-
-    @foreach (var item in Model)
+    @using (Html.BeginForm())
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ano)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Artista1.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Editora1.Nome)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.idAlbum }) |
-                @Html.ActionLink("Detalhes", "Details", new { id = item.idAlbum }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.idAlbum })
-            </td>
-        </tr>
+        <p>
+            Nome de Album: @Html.TextBox("SearchString")
+            <input type="submit" value="Pesquisar" />
+        </p>
     }
 
-</table>
+    <table class="table">
+
+        <tr>
+            <th>
+                @Html.ActionLink("Nome", "Index", new { sortOrder = ViewBag.NomeSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Ano", "Index", new { sortOrder = ViewBag.AnoSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Artista", "Index", new { sortOrder = ViewBag.ArtistaSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Editora", "Index", new { sortOrder = ViewBag.EditoraSortParm })
+            </th>
+        </tr>
+
+
+
+        <!--
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ano)
+            </th>
+            <th>
+                @Html.Label("Artista")
+                <!--
+                @Html.DisplayNameFor(model => model.Artista1.Nome)
+                    -->
+        <!--
+            </th>
+            <th>
+                @Html.Label("Editora")
+                -->
+        <!--
+        @Html.DisplayNameFor(model => model.Editora1.Nome)
+            -->
+        <!--
+            </th>
+            <th></th>
+        </tr>
+        -->
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ano)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Artista1.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Editora1.Nome)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idAlbum }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.idAlbum }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.idAlbum })
+                </td>
+            </tr>
+        }
+
+    </table>

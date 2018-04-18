@@ -10,54 +10,54 @@
 <div>
     <h4>Album</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nome)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ano)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Nome)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ano)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Ano)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Artista1.Nome)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Ano)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Artista1.Nome)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Artista1.Nome)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Editora1.Nome)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Artista1.Nome)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.Editora1.Nome)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Editora1.Nome)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Editora1.Nome)
+            </dd>
+        </dl>
+        </div>
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    <div class="form-actions no-color">
-        <input type="submit" value="Delete" class="btn btn-default" />
-        <p>
-            <a class="btn btn-primary btn-sm" href="/Albums/Index">
-                <img src="https://i.imgur.com/nXrUxGd.png" alt="voltarIcon" align="middle" />
-                Voltar
-            </a>
-        </p>
-    </div>
-        
-    }
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <p>
+                    <a class="btn btn-primary btn-sm" href="/Albums/Index">
+                        <img src="~/Imagens/setaEsq.png" alt="voltarIcon" align="middle" />
+                        Voltar
+                    </a>
+                </p>
+            </div>
+
+        }
