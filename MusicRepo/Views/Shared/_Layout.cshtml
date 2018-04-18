@@ -4,42 +4,67 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Music ASP.NET ESII</title>
+    <title>@ViewBag.Title - MusicRepo</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("MusicRepo ESII", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Albuns", "Index", "Albums")</li>
-                    <li>@Html.ActionLink("Artistas", "Index", "Artistas")</li>
-                    <li>@Html.ActionLink("Editoras", "Index", "Editoras")</li>
-                    <li>@Html.ActionLink("Festivais", "Index", "Festivals")</li>
-                    <li>@Html.ActionLink("Musicas", "Index", "Musicas")</li>
-                    <li>@Html.ActionLink("Sobre", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contactos", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">
+            <img src="https://imgur.com/9tcm2gZ.png" alt="Logo MusicRepo" align="middle" />
+            MusicRepo
+        </a>
+        <!--
+            <div class="collapse navbar-collapse" id="navbarColor01">
+            -->
+            <ul class="navbar-nav mr-auto">
+                <!-- @Html.ActionLink("MusicRepo ESII", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) -->
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Albums">Albuns</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Artistas">Artistas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Editoras">Editoras</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Festivals">Festivais</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Musicas">Musicas</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/Home/Contact">Contacto</a>
+                </li>
+            </ul>
+            @Html.Partial("_LoginPartial")
+        <!--
         </div>
-    </div>
+            -->
+    </nav>
+
+    <!--<div class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Início", "Index", "Home")</li>
+        <li>@Html.ActionLink("Albuns", "Index", "Albums")</li>
+        <li>@Html.ActionLink("Artistas", "Index", "Artistas")</li>
+        <li>@Html.ActionLink("Editoras", "Index", "Editoras")</li>
+        <li>@Html.ActionLink("Festivais", "Index", "Festivals")</li>
+        <li>@Html.ActionLink("Musicas", "Index", "Musicas")</li>
+        <li>@Html.ActionLink("Sobre", "About", "Home")</li>
+        <li>@Html.ActionLink("Contactos", "Contact", "Home")</li>
+    </ul>
+    </div> -->
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Aplicação ASP.NET - IPVC</p>
+            <p>&copy; @DateTime.Now.Year - MusicRepo - IPVC</p>
         </footer>
     </div>
 

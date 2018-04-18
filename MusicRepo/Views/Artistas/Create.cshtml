@@ -1,10 +1,10 @@
 ﻿@model MusicRepo.Models.Artista
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Criar";
 }
 
-<h2>Create</h2>
+<h2>Criar</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -38,6 +38,11 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        <p>
+            <a class="btn btn-primary btn-sm" href="/Artistas/Index">
+                <img src="https://i.imgur.com/nXrUxGd.png" alt="voltarIcon" align="middle" />
+                Voltar
+            </a>
+        </p>
+    </div>

@@ -1,13 +1,17 @@
 ﻿@model IEnumerable<MusicRepo.Models.Festival>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Festivais";
 }
 
-<h2>Index</h2>
+<h2>Festivais</h2>
 
-<p><a class="btn btn-primary btn-lg" href="/Festivals/Create">Criar</a></p>
-
+<p>
+    <a class="btn btn-primary" href="/Festivals/Create">
+        <img src="https://imgur.com/XQugWNG.png" alt="addIcon" align="middle" />
+        Adicionar
+    </a>
+</p>
 
 <table class="table">
     <tr>
@@ -30,9 +34,9 @@
                 @Html.DisplayFor(modelItem => item.Localidade)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idFestival }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idFestival }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idFestival })
+                @Html.ActionLink("Editar", "Edit", new { id = item.idFestival }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.idFestival }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.idFestival })
             </td>
         </tr>
     }

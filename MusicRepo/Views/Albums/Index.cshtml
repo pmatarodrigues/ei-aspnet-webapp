@@ -1,13 +1,17 @@
 ﻿@model IEnumerable<MusicRepo.Models.Album>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Albums";
 }
 
-<h2>Index</h2>
+<h2>Albums</h2>
 
 <p>
-<p><a class="btn btn-primary btn-lg" href="/Albums/Create">Criar</a></p>
+<p><a class="btn btn-primary" href="/Albums/Create">
+    <img src="https://imgur.com/XQugWNG.png" alt="addIcon" align="middle" />
+    Adicionar
+</a></p>
+
 
 
 @using (Html.BeginForm())
@@ -79,9 +83,9 @@
                 @Html.DisplayFor(modelItem => item.Editora1.Nome)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idAlbum }) |
-                @Html.ActionLink("Details", "Details", new { id = item.idAlbum }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idAlbum })
+                @Html.ActionLink("Editar", "Edit", new { id = item.idAlbum }) |
+                @Html.ActionLink("Detalhes", "Details", new { id = item.idAlbum }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.idAlbum })
             </td>
         </tr>
     }

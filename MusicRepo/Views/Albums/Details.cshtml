@@ -1,10 +1,10 @@
 ﻿@model MusicRepo.Models.Album
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalhes";
 }
 
-<h2>Details</h2>
+<h2>Detalhes</h2>
 
 <div>
     <h4>Album</h4>
@@ -70,6 +70,9 @@
 
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idAlbum }) |
-    @Html.ActionLink("Back to List", "Index")
+<a class="btn btn-primary btn-sm" href="/Albums/Index">
+    <img src="https://i.imgur.com/nXrUxGd.png" alt="voltarIcon" align="middle" />
+    Voltar</a>
+@Html.ActionLink("Editar", "Edit", new { id = Model.idAlbum })
+
 </p>

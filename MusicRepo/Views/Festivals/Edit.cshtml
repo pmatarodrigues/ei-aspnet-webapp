@@ -1,10 +1,10 @@
 ﻿@model MusicRepo.Models.Festival
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar";
 }
 
-<h2>Edit</h2>
+<h2>Editar</h2>
 
 @using (Html.BeginForm())
 {
@@ -48,6 +48,11 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        <p>
+            <a class="btn btn-primary btn-sm" href="/Festivals/Index">
+                <img src="https://i.imgur.com/nXrUxGd.png" alt="voltarIcon" align="middle" />
+                Voltar
+            </a>
+        </p>
+    </div>
