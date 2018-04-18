@@ -247,13 +247,18 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Imagens\album.png" />
+    <Content Include="Imagens\artista.png" />
     <Content Include="Imagens\banner.png" />
+    <Content Include="Imagens\editora.png" />
+    <Content Include="Imagens\festival.png" />
     <Content Include="Imagens\github-logo.png" />
     <Content Include="Imagens\linkedin-logo.png" />
     <Content Include="Imagens\logo.png" />
     <Content Include="Imagens\logos-ESTG.png" />
     <Content Include="Imagens\logo_small.png" />
     <Content Include="Imagens\mais.png" />
+    <Content Include="Imagens\musica.png" />
     <Content Include="Imagens\setaEsq.png" />
     <Content Include="Models\ModelDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
