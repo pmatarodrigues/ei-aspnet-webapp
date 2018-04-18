@@ -7,18 +7,28 @@
 
         <ul class="nav navbar-nav navbar-right">
             <li>
-                @Html.ActionLink("A Minha Conta", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                <a type="button" class="btn btn-success" href="/Manage">
+                    A Minha Conta
+                </a>
             </li>
-            |
-            <li><a href="javascript:document.getElementById('logoutForm').submit()">Terminar Sessão</a></li>
+            <li>
+            <a type="button" class="btn btn-success" href="javascript:document.getElementById('logoutForm').submit()">
+                Terminar Sessão</a>
+            </li>
         </ul>
     }
 }
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Registar", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        |
-        <li>@Html.ActionLink("Iniciar Sessão", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li>
+            <a type="button" class="btn btn-success" href="/Account/Register">
+                Registar
+            </a>        </li>
+        <li>
+            <a type="button" class="btn btn-success" href="/Account/Login">
+                Iniciar Sessão
+            </a>        
+        </li>
     </ul>
 }
