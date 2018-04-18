@@ -247,6 +247,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Imagens\banner.png" />
     <Content Include="Imagens\github-logo.png" />
     <Content Include="Imagens\linkedin-logo.png" />
     <Content Include="Imagens\logo.png" />
